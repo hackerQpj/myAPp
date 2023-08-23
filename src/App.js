@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from "react";
+import { Layout, Menu, Button, theme } from "antd";
+import SideMemu from "./components/SideMenu";
+import TopHeader from "./components/TopHeader";
+const { Content } = Layout;
+const App = () => {
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Layout>
+      <SideMemu collapsed={collapsed} />
+      <Layout>
+        <TopHeader
+          colorBgContainer={colorBgContainer}
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+        />
+        <Content
+          style={{
+            margin: "24px 16px",
+            padding: 24,
+            minHeight: 280,
+            background: colorBgContainer,
+          }}
         >
-          上传代码到github
-        </a>
-      </header>
-    </div>
+          Content
+        </Content>
+      </Layout>
+    </Layout>
   );
-}
-
+};
 export default App;
