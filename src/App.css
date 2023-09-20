@@ -32,7 +32,13 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.main-layout {
+   height: 100vh;
+   /* 设置最外层容器高度 */ 
 }

@@ -3,10 +3,8 @@ import {
   HomeFilled,
   createFromIconfontCN,
 } from "@ant-design/icons";
-import { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import "./index.css";
-import axios from "axios";
 const { Sider } = Layout;
 
 export default function SideMemu({ collapsed }) {
@@ -74,19 +72,6 @@ export default function SideMemu({ collapsed }) {
       ],
     },
   ];
-
-//   const [data, setData] = useState(items);
-
-//   const ajax = () => {
-//     axios.get("http://localhost:3000/right").then((res) => {
-//       res && res?.data?.length > 0 && setData(res);
-//       console.log("res", res);
-//     });
-//   };
-
-//   useEffect(() => {
-//     ajax();
-//   }, []);
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
