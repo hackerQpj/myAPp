@@ -1,0 +1,13 @@
+.layoutContainer {
+    max-width: 200px;
+    height: 100vh;
+}
+
+.logo {
+    line-height: 32px;
+    color: white;
+    background-color: "green";
+    font-size: 18px;
+    margin-left: 30px;
+
+}

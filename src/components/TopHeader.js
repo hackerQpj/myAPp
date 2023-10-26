@@ -3,14 +3,10 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import React from "react";
-import { Avatar, Space, Dropdown, message } from "antd";
+import { Avatar, Space, Dropdown, message ,theme} from "antd";
 const { Header } = Layout;
 
-export default function TopHeader({
-  colorBgContainer,
-  collapsed,
-  setCollapsed,
-}) {
+export default function TopHeader({ collapsed, setCollapsed }) {
   const [open, setOpen] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -40,6 +36,10 @@ export default function TopHeader({
     },
   ];
 
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
     <Header
       style={{
@@ -53,6 +53,7 @@ export default function TopHeader({
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          
         }}
       >
         <Button

@@ -46,10 +46,10 @@ let str = "abcafcd";
 
 export function sort(arr) {
   if (Array.isArray(arr)) {
-    for (let i = 0; i < arr.length - 1; i++) {
-      for (let j = 0; j < arr.length - 1 - i; j++) {
+    for (let i = 0; i <= arr.length - 1; i++) {
+      for (let j = 0; j <= arr.length - 1 - i; j++) {
         if (arr[j] > arr[j + 1]) {
-         let temp = arr[j];
+          let temp = arr[j];
           arr[j] = arr[j + 1];
           arr[j + 1] = temp;
         }
@@ -58,8 +58,6 @@ export function sort(arr) {
     return arr;
   }
 }
-
-
 
 //判断回文字符串
 // let str="aba";
@@ -233,3 +231,142 @@ export function fuc4(str) {
   }
   return undefined;
 }
+
+
+
+
+
+第一题：
+import React, { useState } from 'react';
+
+function Input() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+     <div>{inputValue}</div>
+    </div>
+  );
+}
+
+export default Input;
+
+
+
+第二题：
+
+import React, { useState } from 'react';
+
+function Input({ value, onChange }) {
+  return (
+    <div>
+      <input
+        type="text"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      <div>{value}</div>
+    </div>
+  );
+}
+
+function App() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (value) => {
+    setInputValue(value);
+  };
+
+  return (
+    <div>
+      <p>输入值显示为</p>
+      <Input value={inputValue} onChange={handleInputChange} />
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+第三题：
+import React, { useState } from 'react';
+
+function Input({ value, onChange }) {
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={onChange}
+    />
+  );
+}
+
+function FormItem({ name }) {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+  };
+
+  return (
+    <div>
+      <div>{name}:</div>
+      <Input value={inputValue} onChange={handleInputChange} />
+      <div>value:{inputValue}</div>
+    </div>
+  );
+}
+
+export default FormItem;
+
+
+
+let url = "http://www.baidu.com?name=张三&age=25&sex=男&wife=小红"
+
+export const getURLParams=(url)=>{
+  let urlStr=url.split('?')[1];
+  let urlArr=urlStr.split('&');
+  let obj={}
+  for (let i=0;i<urlArr.length;i++) {
+    let itemArr=urlArr[i].split('=')
+    obj[itemArr[0]]=itemArr[1]
+  }
+  return obj
+}
+
+
+//写一个防抖函数
+const debounce=()=>{}
+
+const debounce1=function(fn){
+  return function(){
+    let timer=null;
+    if(timer){
+      clearTimeout(timer);
+      timer=null;
+    }
+    setTimeout(()=>{
+      fn()
+    },1000)
+  }
+}
+
+
+let fn=()=>{
+  console.log(111);
+}
+
+let bb=debounce(fn)
