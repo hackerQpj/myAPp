@@ -1,169 +1,99 @@
 {
-  "right": [
+  "menu": [
     {
-      "id": 1,
       "title": "首页",
-      "key": "/home",
-      "pagepermission": 1,
-      "grade": 1
+      "permission": 1,
+      "path": "/home"
     },
     {
-      "id": 2,
       "title": "用户管理",
-      "key": "/user-manage",
-      "pagepermission": 1,
-      "grade": 1
+      "permission": 1,
+      "path": "/user-manage",
+      "children": [
+        {
+          "title": "用户列表",
+          "path": "/user-manage/list",
+          "permission": 1
+        }
+      ]
     },
     {
-      "id": 7,
       "title": "权限管理",
-      "key": "/right-manage",
-      "pagepermission": 1,
-      "grade": 1
+      "permission": 1,
+      "path": "/limit-manage",
+      "children": [
+        {
+          "title": "角色列表",
+          "path": "/limit-manage/role-list",
+          "permission": 1
+        },
+        {
+          "title": "权限列表",
+          "path": "/limit-manage/limit-list",
+          "permission": 1
+        }
+      ]
     },
     {
-      "id": 14,
       "title": "新闻管理",
-      "key": "/news-manage",
-      "pagepermission": 1,
-      "grade": 1
+      "permission": 1,
+      "path": "/news-manage",
+      "children": [
+        {
+          "title": "撰写新闻",
+          "path": "/news-manage/add",
+          "permission": 1
+        },
+        {
+          "title": "草稿箱",
+          "path": "/news-manage/drafts",
+          "permission": 1
+        },
+        {
+          "title": "新闻分类",
+          "path": "/news-manage/sort",
+          "permission": 1
+        }
+      ]
     },
     {
-      "id": 21,
       "title": "审核管理",
-      "key": "/audit-manage",
-      "pagepermission": 1,
-      "grade": 1
+      "permission": 1,
+      "path": "/audit-manage",
+      "children": [
+        {
+          "title": "审核新闻",
+          "permission": 1,
+          "path": "/audit-manage/audit-news"
+        },
+        {
+          "title": "审核列表",
+          "permission": 1,
+          "path": "/audit-manage/audit-lists"
+        }
+      ]
     },
     {
-      "id": 24,
       "title": "发布管理",
-      "key": "/publish-manage",
-      "pagepermission": 1,
-      "grade": 1
-    }
-  ],
-  "children": [
-    {
-      "id": 3,
-      "title": "添加用户",
-      "rightId": 2,
-      "key": "/user-manage/add",
-      "grade": 2
-    },
-    {
-      "id": 4,
-      "title": "删除用户",
-      "rightId": 2,
-      "key": "/user-manage/delete",
-      "grade": 2
-    },
-    {
-      "id": 5,
-      "title": "修改用户",
-      "rightId": 2,
-      "key": "/user-manage/update",
-      "grade": 2
-    },
-    {
-      "id": 6,
-      "title": "用户列表",
-      "rightId": 2,
-      "key": "/user-manage/list",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 8,
-      "title": "角色列表",
-      "rightId": 7,
-      "key": "/right-manage/role/list",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 9,
-      "title": "权限列表",
-      "rightId": 7,
-      "key": "/right-manage/right/list",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 11,
-      "title": "删除角色",
-      "rightId": 7,
-      "key": "/right-manage/role/delete",
-      "grade": 2
-    },
-    {
-      "id": 12,
-      "title": "修改权限",
-      "rightId": 7,
-      "key": "/right-manage/right/update",
-      "grade": 2
-    },
-    {
-      "id": 13,
-      "title": "删除权限",
-      "rightId": 7,
-      "key": "/right-manage/right/delete",
-      "grade": 2
-    },
-    {
-      "id": 15,
-      "title": "新闻列表",
-      "rightId": 14,
-      "key": "/news-manage/list",
-      "grade": 2
-    },
-    {
-      "id": 16,
-      "title": "拽写新闻",
-      "rightId": 14,
-      "key": "/news-manage/add",
-      "pagepermission": 2,
-      "grade": 1
-    },
-    {
-      "id": 22,
-      "title": "审核新闻",
-      "rightId": 21,
-      "key": "/audit-manage/audit",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 23,
-      "title": "审核列表",
-      "rightId": 21,
-      "key": "/audit-manage/list",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 25,
-      "title": "待发布",
-      "rightId": 24,
-      "key": "/publish-manage/unpublished",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 26,
-      "title": "已发布",
-      "rightId": 24,
-      "key": "/publish-manage/published",
-      "pagepermission": 1,
-      "grade": 2
-    },
-    {
-      "id": 27,
-      "title": "已下线",
-      "rightId": 24,
-      "key": "/publish-manage/sunset",
-      "pagepermission": 1,
-      "grade": 2
+      "permission": 1,
+      "path": "/publish-manage",
+      "children": [
+        {
+          "title": "待发布",
+          "path": "/publish-manage/unpublished",
+          "permission": 1
+        },
+        {
+          "title": "已发布",
+          "path": "/publish-manage/published",
+          "permission": 1
+        },
+        {
+          "title": "已下线",
+          "path": "/publish-manage/sunset",
+          "permission": 1
+        }
+      ]
     }
   ]
 }
