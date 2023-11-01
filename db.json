@@ -1,99 +1,136 @@
 {
-  "menu": [
+  "menus": [
     {
+      "id": 1,
       "title": "首页",
       "permission": 1,
-      "path": "/home"
+      "path": "/home",
+      "grade": 1
     },
     {
+      "id": 2,
       "title": "用户管理",
       "permission": 1,
       "path": "/user-manage",
-      "children": [
-        {
-          "title": "用户列表",
-          "path": "/user-manage/list",
-          "permission": 1
-        }
-      ]
+      "grade": 1
     },
     {
+      "id": 4,
       "title": "权限管理",
       "permission": 1,
       "path": "/limit-manage",
-      "children": [
-        {
-          "title": "角色列表",
-          "path": "/limit-manage/role-list",
-          "permission": 1
-        },
-        {
-          "title": "权限列表",
-          "path": "/limit-manage/limit-list",
-          "permission": 1
-        }
-      ]
+      "grade": 1
     },
     {
+      "id": 7,
       "title": "新闻管理",
       "permission": 1,
       "path": "/news-manage",
-      "children": [
-        {
-          "title": "撰写新闻",
-          "path": "/news-manage/add",
-          "permission": 1
-        },
-        {
-          "title": "草稿箱",
-          "path": "/news-manage/drafts",
-          "permission": 1
-        },
-        {
-          "title": "新闻分类",
-          "path": "/news-manage/sort",
-          "permission": 1
-        }
-      ]
+      "grade": 1
     },
     {
+      "id": 11,
       "title": "审核管理",
       "permission": 1,
       "path": "/audit-manage",
-      "children": [
-        {
-          "title": "审核新闻",
-          "permission": 1,
-          "path": "/audit-manage/audit-news"
-        },
-        {
-          "title": "审核列表",
-          "permission": 1,
-          "path": "/audit-manage/audit-lists"
-        }
-      ]
+      "grade": 1
     },
     {
+      "id": 14,
       "title": "发布管理",
       "permission": 1,
       "path": "/publish-manage",
-      "children": [
-        {
-          "title": "待发布",
-          "path": "/publish-manage/unpublished",
-          "permission": 1
-        },
-        {
-          "title": "已发布",
-          "path": "/publish-manage/published",
-          "permission": 1
-        },
-        {
-          "title": "已下线",
-          "path": "/publish-manage/sunset",
-          "permission": 1
-        }
-      ]
+      "grade": 1
+    }
+  ],
+  "children": [
+    {
+      "id": 3,
+      "title": "用户列表",
+      "path": "/user-manage/list",
+      "permission": 1,
+      "menuId": 2,
+      "grade": 2
+    },
+    {
+      "id": 5,
+      "menuId": 4,
+      "title": "角色列表",
+      "path": "/limit-manage/role-list",
+      "permission": 1,
+      "grade": 2
+    },
+    {
+      "id": 6,
+      "title": "权限列表",
+      "path": "/limit-manage/limit-list",
+      "permission": 1,
+      "menuId": 4,
+      "grade": 2
+    },
+    {
+      "id": 8,
+      "title": "撰写新闻",
+      "path": "/news-manage/add",
+      "permission": 1,
+      "menuId": 7,
+      "grade": 2
+    },
+    {
+      "id": 9,
+      "title": "草稿箱",
+      "path": "/news-manage/drafts",
+      "permission": 1,
+      "menuId": 7,
+      "grade": 2
+    },
+    {
+      "id": 10,
+      "title": "新闻分类",
+      "path": "/news-manage/sort",
+      "permission": 1,
+      "menuId": 7,
+      "grade": 2
+    },
+    {
+      "id": 12,
+      "title": "审核新闻",
+      "permission": 1,
+      "path": "/audit-manage/audit-news",
+      "menuId": 11,
+      "grade": 2
+    },
+    {
+      "id": 13,
+      "title": "审核列表",
+      "permission": 1,
+      "path": "/audit-manage/audit-lists",
+      "menuId": 11,
+      "grade": 2
+    },
+    {
+      "id": 15,
+      "title": "待发布",
+      "path": "/publish-manage/unpublished",
+      "permission": 1,
+      "menuId": 14,
+      "grade": 2
+    },
+    {
+      "id": 16,
+      "title": "已发布",
+      "path": "/publish-manage/published",
+      "permission": 1,
+      "menuId": 14,
+      "grade": 2
+    },
+    {
+      "id": 17,
+      "title": "已下线",
+      "path": "/publish-manage/sunset",
+      "permission": 1,
+      "menuId": 14,
+      "grade": 2
     }
   ]
 }

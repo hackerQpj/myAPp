@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import routeconfig from "./routeConfig";
 import SideMemu from "../components/SiderMenu/SideMenu";
 import { Layout, theme } from "antd";
@@ -49,17 +49,21 @@ export default function AppRouter(props) {
       }}
     >
       <SideMemu collapsed={collapsed}></SideMemu>
-      <Layout>
+
+      <Layout
+        style={{ display: "flex", flexDirection: "column", height: "700px" }}
+      >
         <TopHeader
           collapsed={collapsed}
           setCollapsed={setCollapsed}
         ></TopHeader>
+
         <Content
           style={{
             margin: "16px 16px",
-            //padding: 12,
             minHeight: 280,
             background: colorBgContainer,
+            overflow: "auto",
           }}
         >
           <Routes>{renderRoutes(routeconfig)}</Routes>

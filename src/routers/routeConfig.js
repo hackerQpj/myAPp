@@ -18,7 +18,7 @@ const routeconfig = [
   {
     id: 1,
     path: "/",
-    component: <Navigate to="home" />,//重定向到home组件
+    component: <Navigate to="home" />, //重定向到home组件
   },
   {
     id: 2,
