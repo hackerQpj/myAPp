@@ -39,7 +39,7 @@ export const LimitList = () => {
     } else {
       let list = dataSource.filter((data) => data.id === item.menuId); //找到父级
       list[0].children = list[0].children.filter((data) => data.id !== item.id);
-      console.log("-----", list[0].children, dataSource);
+
       setDataSource([...dataSource]);
       axios.delete(`http://localhost:3000/children/${item.id}`);
     }
@@ -48,13 +48,13 @@ export const LimitList = () => {
   const switchMethod = (item) => {
     item.permission = item.permission === 1 ? 0 : 1;
     setDataSource([...dataSource]);
-    if (item.grade===1) {
-      axios.patch(`http://localhost:3000/menus/${item.id}`,{
-        permission:item.permission
+    if (item.grade === 1) {
+      axios.patch(`http://localhost:3000/menus/${item.id}`, {
+        permission: item.permission,
       });
     } else {
-      axios.patch(`http://localhost:3000/children/${item.id}`,{
-        permission:item.permission
+      axios.patch(`http://localhost:3000/children/${item.id}`, {
+        permission: item.permission,
       });
     }
   };
@@ -136,6 +136,7 @@ export const LimitList = () => {
       dataSource={dataSource}
       columns={columns}
       pagination={{ pageSize: 5 }}
+      rowKey={(item) => item.id}
     />
   );
 };

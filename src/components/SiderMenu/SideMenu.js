@@ -45,7 +45,6 @@ function SideMemu(props) {
     axios.get("http://localhost:3000/menus?_embed=children").then((res) => {
       const { data } = res || {};
       if (Array.isArray(data) && data.length > 0) {
-        console.log("--data---", data);
         data.forEach((item) => {
           if (item.children.length === 0) {
             item.children = "";

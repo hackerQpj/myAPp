@@ -5,6 +5,7 @@
       "title": "首页",
       "permission": 1,
       "path": "/home",
+      "key": "/home",
       "grade": 1
     },
     {
@@ -12,6 +13,7 @@
       "title": "用户管理",
       "permission": 1,
       "path": "/user-manage",
+      "key": "/user-manage",
       "grade": 1
     },
     {
@@ -19,6 +21,7 @@
       "title": "权限管理",
       "permission": 1,
       "path": "/limit-manage",
+      "key": "/limit-manage",
       "grade": 1
     },
     {
@@ -26,6 +29,7 @@
       "title": "新闻管理",
       "permission": 1,
       "path": "/news-manage",
+      "key": "/news-manage",
       "grade": 1
     },
     {
@@ -33,6 +37,7 @@
       "title": "审核管理",
       "permission": 1,
       "path": "/audit-manage",
+      "key": "/audit-manage",
       "grade": 1
     },
     {
@@ -40,6 +45,7 @@
       "title": "发布管理",
       "permission": 1,
       "path": "/publish-manage",
+      "key": "/publish-manage",
       "grade": 1
     }
   ],
@@ -48,6 +54,7 @@
       "id": 3,
       "title": "用户列表",
       "path": "/user-manage/list",
+      "key": "/user-manage/list",
       "permission": 1,
       "menuId": 2,
       "grade": 2
@@ -57,6 +64,7 @@
       "menuId": 4,
       "title": "角色列表",
       "path": "/limit-manage/role-list",
+      "key": "/limit-manage/role-list",
       "permission": 1,
       "grade": 2
     },
@@ -64,6 +72,7 @@
       "id": 6,
       "title": "权限列表",
       "path": "/limit-manage/limit-list",
+      "key": "/limit-manage/limit-list",
       "permission": 1,
       "menuId": 4,
       "grade": 2
@@ -72,6 +81,7 @@
       "id": 8,
       "title": "撰写新闻",
       "path": "/news-manage/add",
+      "key": "/news-manage/add",
       "permission": 1,
       "menuId": 7,
       "grade": 2
@@ -80,6 +90,7 @@
       "id": 9,
       "title": "草稿箱",
       "path": "/news-manage/drafts",
+      "key": "/news-manage/drafts",
       "permission": 1,
       "menuId": 7,
       "grade": 2
@@ -88,6 +99,7 @@
       "id": 10,
       "title": "新闻分类",
       "path": "/news-manage/sort",
+      "key": "/news-manage/sort",
       "permission": 1,
       "menuId": 7,
       "grade": 2
@@ -97,6 +109,7 @@
       "title": "审核新闻",
       "permission": 1,
       "path": "/audit-manage/audit-news",
+      "key": "/audit-manage/audit-news",
       "menuId": 11,
       "grade": 2
     },
@@ -105,6 +118,7 @@
       "title": "审核列表",
       "permission": 1,
       "path": "/audit-manage/audit-lists",
+      "key": "/audit-manage/audit-lists",
       "menuId": 11,
       "grade": 2
     },
@@ -112,6 +126,7 @@
       "id": 15,
       "title": "待发布",
       "path": "/publish-manage/unpublished",
+      "key": "/publish-manage/unpublished",
       "permission": 1,
       "menuId": 14,
       "grade": 2
@@ -120,6 +135,7 @@
       "id": 16,
       "title": "已发布",
       "path": "/publish-manage/published",
+      "key": "/publish-manage/published",
       "permission": 1,
       "menuId": 14,
       "grade": 2
@@ -128,9 +144,58 @@
       "id": 17,
       "title": "已下线",
       "path": "/publish-manage/sunset",
+      "key": "/publish-manage/sunset",
       "permission": 1,
       "menuId": 14,
       "grade": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "roleName": "超级管理员",
+      "roleType": 1,
+      "menus": [
+        "/home",
+        "/user-manage",
+        "/user-manage/list",
+        "/news-manage",
+        "/news-manage/add",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/sunset",
+        "/audit-manage",
+        "/audit-manage/audit-news",
+        "/audit-manage/audit-lists"
+      ]
+    },
+    {
+      "id": 2,
+      "roleName": "区域管理员",
+      "roleType": 1,
+      "menus": [
+        "/home",
+        "/user-manage",
+        "/user-manage/list",
+        "/news-manage",
+        "/news-manage/add",
+        "/audit-manage",
+        "/audit-manage/audit-news",
+        "/audit-manage/audit-lists"
+      ]
+    },
+    {
+      "id": 3,
+      "roleName": "区域编辑",
+      "roleType": 1,
+      "menus": [
+        "/home",
+        "/user-manage",
+        "/user-manage/list",
+        "/news-manage",
+        "/news-manage/add"
+      ]
     }
   ]
 }
