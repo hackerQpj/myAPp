@@ -9,7 +9,8 @@ export const RoleList = () => {
   const [dataSource, setDataSource] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [treeData, setTreeData] = useState([]);
-  const [currentDate, setCurrentData] = useState([]);
+  const [currentData, setCurrentData] = useState([]);
+  const [currentId, setCurrentId] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/roles").then((res) => {
@@ -30,6 +31,7 @@ export const RoleList = () => {
   };
 
   const onCheck = (checkValues) => {
+    console.log("checkValues", checkValues);
     setCurrentData(checkValues);
   };
 
@@ -40,7 +42,7 @@ export const RoleList = () => {
       key: "id",
     },
     {
-      title: "角色操作",
+      title: "角色名称",
       dataIndex: "roleName",
       key: "roleName",
     },
@@ -78,6 +80,7 @@ export const RoleList = () => {
                 setModalVisible(true);
                 console.log("item", item);
                 setCurrentData(item?.menus);
+                setCurrentId(item?.id);
               }}
               icon={<BarsOutlined />}
             />
@@ -96,9 +99,24 @@ export const RoleList = () => {
       />
       <Modal
         title="权限分配"
-        visible={modalVisible}
+        open={modalVisible}
         onOk={() => {
           setModalVisible(false);
+          setDataSource(
+            dataSource.map((item) => {
+              if (item.id === currentId) {
+                return {
+                  ...item,
+                  menus: currentData,
+                };
+              }
+              return item;
+            })
+          );
+
+          axios.patch(`http://localhost:3000/roles/${currentId}`, {
+            menus: currentData,
+          });
         }}
         onCancel={() => {
           setModalVisible(false);
@@ -106,10 +124,10 @@ export const RoleList = () => {
       >
         <Tree
           checkable
-          checkedKeys={currentDate}
-          treeData={treeData}
+          checkedKeys={currentData}
           onCheck={onCheck}
           checkStrictly={true}
+          treeData={treeData}
         />
       </Modal>
     </>

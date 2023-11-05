@@ -10,7 +10,7 @@ export default function Home() {
         style={{
           width: "100%",
           height: "100%",
-          backgroundRepeat:"no-repeat"
+          backgroundRepeat: "no-repeat",
         }}
         alt="背景图"
       ></img>

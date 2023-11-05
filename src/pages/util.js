@@ -1,5 +1,8 @@
 import axios from "axios";
 
-export const requestData = (url, ) => {
-  return axios.get(url);
+export const requestData = (url) => {
+  if (url) {
+    return axios.get(url);
+  }
+  return null;
 };

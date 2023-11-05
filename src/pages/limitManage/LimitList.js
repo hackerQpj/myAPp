@@ -12,6 +12,7 @@ import axios from "axios";
 import { Switch } from "antd";
 
 export const LimitList = () => {
+  const [dataSource, setDataSource] = useState([]);
   const { confirm } = Modal;
 
   useEffect(() => {
@@ -29,8 +30,6 @@ export const LimitList = () => {
     });
   }, []);
 
-  const [dataSource, setDataSource] = useState([]);
-
   const deletefunction = (item) => {
     console.log("item.grade", item.grade);
     if (item.grade === 1) {
@@ -39,7 +38,6 @@ export const LimitList = () => {
     } else {
       let list = dataSource.filter((data) => data.id === item.menuId); //找到父级
       list[0].children = list[0].children.filter((data) => data.id !== item.id);
-
       setDataSource([...dataSource]);
       axios.delete(`http://localhost:3000/children/${item.id}`);
     }
