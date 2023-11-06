@@ -6,3 +6,5 @@ export const requestData = (url) => {
   }
   return null;
 };
+
+export const log = console.log.bind(console)

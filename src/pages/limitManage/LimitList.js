@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Modal, Popover } from "antd";
 import { Tag } from "antd";
-import { requestData } from "../util";
+import { requestData } from "../../utils/util";
 import axios from "axios";
 import { Switch } from "antd";
 
