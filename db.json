@@ -229,14 +229,14 @@
     {
       "id": 2,
       "username": "张三",
-      "password": "123",
+      "password": "666",
       "roleState": true,
       "default": false,
-      "region": "亚洲",
-      "roleId": "2"
+      "region": "欧洲",
+      "roleId": "3"
     },
     {
-      "username": "hackerQu",
+      "username": "hackerQu1",
       "password": "6666",
       "region": "欧洲",
       "roleId": "2",
@@ -245,7 +245,7 @@
       "id": 4
     },
     {
-      "username": "hackerQu",
+      "username": "hackerQu2",
       "password": "123",
       "region": "亚洲",
       "roleId": "3",
@@ -263,7 +263,7 @@
       "id": 6
     },
     {
-      "username": "15079968642",
+      "username": "李四",
       "password": "111",
       "region": "欧洲",
       "roleId": "2",
@@ -351,6 +351,51 @@
       "roleState": true,
       "default": false,
       "id": 19
+    },
+    {
+      "username": "张三",
+      "password": "123",
+      "region": "亚洲",
+      "roleId": "2",
+      "roleState": true,
+      "default": false,
+      "id": 20
+    },
+    {
+      "username": "hackerQu",
+      "password": "6666",
+      "region": "欧洲",
+      "roleId": "2",
+      "roleState": true,
+      "default": false,
+      "id": 21
+    },
+    {
+      "username": "alex",
+      "password": "111",
+      "region": "欧洲",
+      "roleId": "2",
+      "roleState": true,
+      "default": false,
+      "id": 22
+    },
+    {
+      "username": "666",
+      "password": "1234",
+      "region": "全球",
+      "roleId": "1",
+      "roleState": true,
+      "default": false,
+      "id": 23
+    },
+    {
+      "username": "王五",
+      "password": "123",
+      "region": "亚洲",
+      "roleId": "2",
+      "roleState": true,
+      "default": false,
+      "id": 24
     }
   ],
   "regions": [

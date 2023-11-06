@@ -5,15 +5,16 @@ import axios from "axios";
 import UserForm from "../../components/user-manage/UserForm";
 
 export const UserList = () => {
-  const [useListData, setUserListData] = useState([]);
+  const [userListData, setUserListData] = useState([]);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const [isUpdateModalVisible, setIsUpdateVisible] = useState(false);
   const [regionData, setRegionData] = useState([]);
   const [roleList, setRoleList] = useState([]);
   const [regionIsDisable, setRegionIsDisable] = useState(false);
-  const [isShowEditTitle, setIsShowEditTitle] = useState(false);
+  const [getIdState, setGetIdState] = useState();
   const { confirm } = Modal;
   const [form] = Form.useForm();
+  const [userForm] = Form.useForm();
 
   const getUserListdata = () => {
     axios.get("http://localhost:3000/users?_expand=role").then((res) => {
@@ -35,7 +36,7 @@ export const UserList = () => {
   }, []);
 
   const deletefunction = (item) => {
-    setUserListData(useListData.filter((data) => data.id !== item.id));
+    setUserListData(userListData.filter((data) => data.id !== item.id));
     axios.delete(`http://localhost:3000/users/${item.id}`);
   };
 
@@ -44,6 +45,19 @@ export const UserList = () => {
       title: "区域",
       dataIndex: "region",
       key: "region",
+      filters: [
+        ...regionData.map((item) => {
+          return {
+            text: item.title,
+            value: item.value,
+          };
+        }),
+        {
+          text: "全球",
+          value: "全球",
+        },
+      ],
+      onFilter: (value, record) => record.region === value,
     },
     {
       title: "角色名称",
@@ -66,7 +80,7 @@ export const UserList = () => {
             disabled={item?.default}
             onChange={() => {
               item.roleState = !item.roleState;
-              setUserListData([...useListData]);
+              setUserListData([...userListData]);
               axios.patch(`http://localhost:3000/users/${item.id}`, {
                 roleState: item.roleState,
               });
@@ -102,10 +116,9 @@ export const UserList = () => {
               disabled={item?.id === 1 ? true : false}
               icon={<EditOutlined />}
               onClick={() => {
-                setIsShowEditTitle(true);
-                setIsAddModalVisible(true);
-                console.log("item", item);
-                form.setFieldsValue({
+                setGetIdState(item.id);
+                setIsUpdateVisible(true);
+                userForm.setFieldsValue({
                   ...item,
                 });
               }}
@@ -124,29 +137,27 @@ export const UserList = () => {
         onClick={() => {
           form.resetFields();
           setIsAddModalVisible(true);
-          setIsShowEditTitle(false);
         }}
       >
         添加用户
       </Button>
       <Table
-        dataSource={useListData}
+        dataSource={userListData}
         columns={columns}
         rowKey={(item) => item.id}
         pagination={{ pageSize: 7 }}
       />
       <Modal
         open={isAddModalVisible}
-        title={isShowEditTitle ? "更新用户" : "添加用户"}
+        title="添加用户"
         okText="确定"
         cancelText="取消"
         onOk={() => {
           form
             .validateFields()
             .then((value) => {
-              console.log("--value--", value);
               axios
-                .post("http://localhost:3000/users?_expand=role?", {
+                .post("http://localhost:3000/users?_expand=role", {
                   ...value,
                   roleState: true,
                   default: false,
@@ -162,6 +173,7 @@ export const UserList = () => {
         }}
         onCancel={() => {
           setIsAddModalVisible(false);
+          setRegionIsDisable(false);
         }}
       >
         <UserForm
@@ -174,13 +186,32 @@ export const UserList = () => {
       </Modal>
       <Modal
         open={isUpdateModalVisible}
+        title="更新用户"
         okText="确定"
         cancelText="取消"
-        onOk={(item) => {
-          console.log("item", item);
+        onOk={() => {
+          userForm
+            .validateFields()
+            .then((value) => {
+              console.log("value", value, getIdState);
+              axios
+                .patch(`http://localhost:3000/users/${getIdState}`, {
+                  ...value,
+                  roleState: true,
+                  default: false,
+                })
+                .then((res) => {
+                  getUserListdata();
+                  setIsUpdateVisible(false);
+                });
+            })
+            .catch((err) => {
+              console.log("err", err);
+            });
         }}
         onCancel={() => {
           setIsUpdateVisible(false);
+          setRegionIsDisable(false);
         }}
       >
         <UserForm
@@ -188,7 +219,7 @@ export const UserList = () => {
           regionData={regionData}
           setRegionIsDisable={setRegionIsDisable}
           roleList={roleList}
-          form={form}
+          form={userForm}
         />
       </Modal>
     </>
