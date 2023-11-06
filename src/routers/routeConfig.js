@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../pages/Login";
+import Login from "../pages/login/Login";
 import Home from "../pages/Home";
 import { UserList } from "../pages/userManager/UserList";
 import { LimitList } from "../pages/limitManage/LimitList";
@@ -22,7 +22,7 @@ const routeconfig = [
   },
   {
     id: 2,
-    path: "/Login",
+    path: "/login",
     component: <Login />,
   },
   {
