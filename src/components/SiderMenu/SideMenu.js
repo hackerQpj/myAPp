@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "./index.css";
 import axios from "axios";
+import { log } from "../../utils/util";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -91,36 +92,47 @@ function SideMemu(props) {
   ];
 
   const openKeys = `/${window.location.pathname.split("/")[1]}`;
+  const {
+    role: {
+      menus: { checked = [] },
+    },
+  } = JSON.parse(localStorage.getItem("roleInfo")); //获取登录存储的token（roleInfo）数据
 
-  const checkPagePermit = (item) => {
-    return item.permission === 1;
+  const checkPagePermit = (filterItems) => {
+    return (
+      filterItems.permission === 1 &&
+      checked &&
+      checked.includes(filterItems?.key)
+    );
   }; //权限等级为1的才会渲染
 
   const renderMenu = (siderData) => {
     return siderData
       .filter((items) => items.path && items.title)
-      .map((items, idx) => {
-        if (items.children) {
+      .map((filterItems, idx) => {
+        if (filterItems.children) {
           return (
-            <SubMenu
-              key={items.path}
-              icon={iconList[items.path] || items.icon}
-              title={items.title}
-            >
-              {renderMenu(items.children)}
-            </SubMenu>
+            checkPagePermit(filterItems) && (
+              <SubMenu
+                key={filterItems.path}
+                icon={iconList[filterItems.path] || filterItems.icon}
+                title={filterItems.title}
+              >
+                {renderMenu(filterItems.children)}
+              </SubMenu>
+            )
           );
         }
         return (
-          checkPagePermit(items) && (
+          checkPagePermit(filterItems) && (
             <Menu.Item
-              key={items.path}
-              icon={iconList[items.path] || items.icon}
+              key={filterItems.path}
+              icon={iconList[filterItems.path] || filterItems.icon}
               onClick={() => {
-                navigate(items.path);
+                navigate(filterItems.path);
               }}
             >
-              {items.title}
+              {filterItems.title}
             </Menu.Item>
           )
         );

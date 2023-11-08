@@ -16,10 +16,25 @@ export const UserList = () => {
   const [form] = Form.useForm();
   const [userForm] = Form.useForm();
 
+  const {
+    role: { id: adminId },
+    region: tokenRegion,
+  } = JSON.parse(localStorage.getItem("roleInfo")); //获取登录存储的token（roleInfo）数据
+
+  console.log("adminId", adminId);
+
   const getUserListdata = () => {
     axios.get("http://localhost:3000/users?_expand=role").then((res) => {
       const { data } = res || {};
-      setUserListData(data);
+      if (adminId === 1) {
+        setUserListData(data); //超级管理员数据都可以见
+      } else {
+        setUserListData(
+          data.filter((item) => {
+            return item.role.id === adminId && item.region === tokenRegion;
+          })
+        );
+      }
     });
   };
 
@@ -220,6 +235,7 @@ export const UserList = () => {
           setRegionIsDisable={setRegionIsDisable}
           roleList={roleList}
           form={userForm}
+          isUpdate={true}
         />
       </Modal>
     </>

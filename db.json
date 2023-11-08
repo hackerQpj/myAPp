@@ -157,6 +157,7 @@
       "roleType": 1,
       "menus": {
         "checked": [
+          "/home",
           "/user-manage",
           "/user-manage/list",
           "/news-manage",
@@ -169,7 +170,6 @@
           "/audit-manage/audit-news",
           "/audit-manage/audit-lists",
           "/limit-manage/role-list",
-          "/home",
           "/limit-manage/limit-list",
           "/limit-manage",
           "/news-manage/drafts",
@@ -191,9 +191,7 @@
           "/news-manage/add",
           "/audit-manage",
           "/audit-manage/audit-news",
-          "/audit-manage/audit-lists",
-          "/publish-manage",
-          "/publish-manage/unpublished"
+          "/audit-manage/audit-lists"
         ],
         "halfChecked": []
       }
@@ -209,8 +207,9 @@
           "/user-manage/list",
           "/news-manage",
           "/news-manage/add",
-          "/audit-manage",
-          "/audit-manage/audit-news"
+          "/limit-manage",
+          "/limit-manage/role-list",
+          "/limit-manage/limit-list"
         ],
         "halfChecked": []
       }
@@ -228,30 +227,12 @@
     },
     {
       "id": 2,
-      "username": "张三",
+      "username": "西门吹雪",
       "password": "666",
       "roleState": true,
       "default": false,
       "region": "欧洲",
       "roleId": "3"
-    },
-    {
-      "username": "hackerQu1",
-      "password": "6666",
-      "region": "欧洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 4
-    },
-    {
-      "username": "hackerQu2",
-      "password": "123",
-      "region": "亚洲",
-      "roleId": "3",
-      "roleState": true,
-      "default": false,
-      "id": 5
     },
     {
       "username": "hackerQu",
@@ -272,34 +253,7 @@
       "id": 8
     },
     {
-      "username": "hackerQu",
-      "password": "6666",
-      "region": "亚洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 9
-    },
-    {
-      "username": "hackerQu",
-      "password": "123",
-      "region": "欧洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 10
-    },
-    {
-      "username": "hackerQu",
-      "password": "123",
-      "region": "欧洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 11
-    },
-    {
-      "username": "qupengjun000@gmail.com",
+      "username": "jack",
       "password": "123",
       "region": "北美洲",
       "roleId": "2",
@@ -308,31 +262,13 @@
       "id": 12
     },
     {
-      "username": "hackerQu",
+      "username": "hackerQu12",
       "password": "123",
       "region": "北美洲",
       "roleId": "2",
       "roleState": true,
       "default": false,
       "id": 14
-    },
-    {
-      "username": "hackerQu",
-      "password": "6666",
-      "region": "北美洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 15
-    },
-    {
-      "username": "hackerQu",
-      "password": "123",
-      "region": "欧洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 17
     },
     {
       "username": "lastone",
@@ -344,15 +280,6 @@
       "id": 18
     },
     {
-      "username": "hackerQu",
-      "password": "1234",
-      "region": "全球",
-      "roleId": "1",
-      "roleState": true,
-      "default": false,
-      "id": 19
-    },
-    {
       "username": "张三",
       "password": "123",
       "region": "亚洲",
@@ -360,15 +287,6 @@
       "roleState": true,
       "default": false,
       "id": 20
-    },
-    {
-      "username": "hackerQu",
-      "password": "6666",
-      "region": "欧洲",
-      "roleId": "2",
-      "roleState": true,
-      "default": false,
-      "id": 21
     },
     {
       "username": "alex",
@@ -396,6 +314,15 @@
       "roleState": true,
       "default": false,
       "id": 24
+    },
+    {
+      "username": "甜瓜",
+      "password": "123",
+      "region": "非洲",
+      "roleId": "2",
+      "roleState": true,
+      "default": false,
+      "id": 25
     }
   ],
   "regions": [

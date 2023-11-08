@@ -1,38 +1,49 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import React from "react";
-import { Avatar, Space, Dropdown, message ,theme} from "antd";
+import { Avatar, Space, Dropdown, theme, Modal } from "antd";
+import { useNavigate } from "react-router-dom";
 const { Header } = Layout;
 
 export default function TopHeader({ collapsed, setCollapsed }) {
   const [open, setOpen] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
-
-  useEffect(() => {
-    showMessage && message.info("close the menu");
-  }, [showMessage]);
+  const { confirm } = Modal;
+  const navigate = useNavigate();
+  const {
+    username,
+    role: { roleName },
+  } = JSON.parse(localStorage.getItem("roleInfo"));
 
   const handleMenuClick = (e) => {
     if (e.key === "2") {
-      setOpen(false);
+      confirm({
+        title: "你确认退出账号吗?",
+        onOk() {
+          setOpen(false);
+          navigate("/login");
+        },
+        onCancel() {
+          //console.log("Cancel");
+        },
+      });
     }
   };
 
   const handleOpenChange = (flag) => {
     setOpen(flag);
-    setShowMessage(!flag);
   };
 
   const items = [
     {
-      label: "超级管理员",
+      label: `${roleName}`,
       key: "1",
     },
     {
       label: "退出",
       key: "2",
+      danger: true,
     },
   ];
 
@@ -53,7 +64,6 @@ export default function TopHeader({ collapsed, setCollapsed }) {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          
         }}
       >
         <Button
@@ -73,7 +83,9 @@ export default function TopHeader({ collapsed, setCollapsed }) {
             alignItems: "center",
           }}
         >
-          <span style={{ marginRight: 10 }}>欢迎admin回来</span>
+          <span style={{ marginRight: 10 }}>
+            欢迎<span style={{ color: "#1890ff" }}>{username}</span>回来
+          </span>
           <Dropdown
             menu={{
               items,

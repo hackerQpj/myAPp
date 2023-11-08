@@ -2,9 +2,39 @@ import React from "react";
 import { Form, Input, Select } from "antd";
 
 export default function UserForm(props) {
-  const { regionIsDisable, regionData, setRegionIsDisable, roleList, form } =
-    props || {};
+  const {
+    regionIsDisable,
+    regionData,
+    setRegionIsDisable,
+    roleList,
+    form,
+    isUpdate,
+  } = props || {};
   const { Option } = Select;
+  console.log("isUpdate", isUpdate);
+
+  const roleObj = {
+    1: "superAdmin",
+    2: "admin",
+    3: "editor",
+  };
+
+  const {
+    role: { id },
+    region: tokenRegion,
+  } = JSON.parse(localStorage.getItem("roleInfo")); //获取登录存储的token（roleInfo）数据
+
+  const checkRoleAndRegionIsDisable = ({ data, type }) => {
+    if (isUpdate) {
+      return roleObj[id] === "superAdmin" ? false : true;
+    } else {
+      return roleObj[id] === "superAdmin"
+        ? false
+        : type === "role"
+        ? id !== data.id
+        : tokenRegion !== data.title;
+    }
+  };
 
   return (
     <Form layout="vertical" form={form}>
@@ -50,7 +80,14 @@ export default function UserForm(props) {
           {regionData.length > 0 &&
             regionData.map((data) => {
               return (
-                <Option value={data.value} key={data.id}>
+                <Option
+                  value={data.value}
+                  key={data.id}
+                  disabled={checkRoleAndRegionIsDisable({
+                    data,
+                    type: "region",
+                  })}
+                >
                   {data.value}
                 </Option>
               );
@@ -81,7 +118,14 @@ export default function UserForm(props) {
         >
           {roleList.length > 0 &&
             roleList.map((data) => {
-              return <Option key={data.id}>{data.roleName}</Option>;
+              return (
+                <Option
+                  key={data.id}
+                  disabled={checkRoleAndRegionIsDisable({ data, type: "role" })}
+                >
+                  {data.roleName}
+                </Option>
+              );
             })}
         </Select>
       </Form.Item>
