@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Table, Switch, Button, Modal, Form } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import axios from "axios";
@@ -21,9 +21,7 @@ export const UserList = () => {
     region: tokenRegion,
   } = JSON.parse(localStorage.getItem("roleInfo")); //获取登录存储的token（roleInfo）数据
 
-  console.log("adminId", adminId);
-
-  const getUserListdata = () => {
+  const getUserListdata = useCallback(() => {
     axios.get("http://localhost:3000/users?_expand=role").then((res) => {
       const { data } = res || {};
       if (adminId === 1) {
@@ -36,7 +34,7 @@ export const UserList = () => {
         );
       }
     });
-  };
+  }, [adminId, tokenRegion]);
 
   useEffect(() => {
     getUserListdata();
@@ -48,7 +46,7 @@ export const UserList = () => {
       const { data } = res || {};
       data.length > 0 && setRoleList(data);
     });
-  }, []);
+  }, [getUserListdata]);
 
   const deletefunction = (item) => {
     setUserListData(userListData.filter((data) => data.id !== item.id));
@@ -208,7 +206,6 @@ export const UserList = () => {
           userForm
             .validateFields()
             .then((value) => {
-              console.log("value", value, getIdState);
               axios
                 .patch(`http://localhost:3000/users/${getIdState}`, {
                   ...value,

@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import routeconfig from "./routeConfig";
-import SideMemu from "../components/SiderMenu/SideMenu";
+import SideMemu from "../components/sidermenu/SideMenu";
 import { Layout, theme } from "antd";
 import TopHeader from "../components/topheader/TopHeader";
+import Nopermission from "./Nopermission";
+import { getUserTokenInfo } from "../utils/util";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
 const { Content } = Layout;
 
 export default function AppRouter(props) {
   const [collapsed, setCollapsed] = useState(false);
+  let userTokenInfo = getUserTokenInfo();
+  const { role: { menus: { checked = [] } = {} } = {} } = userTokenInfo || {};
+
+  const checkUserPermission = (item) => {
+    return checked.includes(item.path); //做路由权限验证
+  };
+
   const renderRoutes = (newList) => {
     if (Array.isArray(newList)) {
       return newList
@@ -20,16 +32,20 @@ export default function AppRouter(props) {
                   key={item.id}
                   path={item.path}
                   element={item.component}
+                  exact
                 ></Route>
               );
             });
           } else {
             return (
-              <Route
-                key={item.id}
-                path={item.path}
-                element={item.component}
-              ></Route>
+              checkUserPermission(item) && (
+                <Route
+                  key={item.id}
+                  path={item.path}
+                  element={item.component}
+                  exact
+                ></Route>
+              ) //渲染的路由下面的children
             );
           }
         });
@@ -38,6 +54,12 @@ export default function AppRouter(props) {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  NProgress.start();
+  
+  useEffect(() => {
+    NProgress.done();
+  }, []);
 
   return (
     <Layout
@@ -66,7 +88,10 @@ export default function AppRouter(props) {
             overflow: "auto",
           }}
         >
-          <Routes>{renderRoutes(routeconfig)}</Routes>
+          <Routes>
+            {renderRoutes(routeconfig)}
+            <Route path="*" element={<Nopermission />} exact></Route>
+          </Routes>
         </Content>
       </Layout>
     </Layout>

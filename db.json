@@ -157,7 +157,6 @@
       "roleType": 1,
       "menus": {
         "checked": [
-          "/home",
           "/user-manage",
           "/user-manage/list",
           "/news-manage",
@@ -173,7 +172,8 @@
           "/limit-manage/limit-list",
           "/limit-manage",
           "/news-manage/drafts",
-          "/news-manage/sort"
+          "/news-manage/sort",
+          "/home"
         ],
         "halfChecked": []
       }
@@ -191,7 +191,11 @@
           "/news-manage/add",
           "/audit-manage",
           "/audit-manage/audit-news",
-          "/audit-manage/audit-lists"
+          "/audit-manage/audit-lists",
+          "/publish-manage",
+          "/publish-manage/published",
+          "/publish-manage/unpublished",
+          "/publish-manage/sunset"
         ],
         "halfChecked": []
       }
@@ -207,9 +211,10 @@
           "/user-manage/list",
           "/news-manage",
           "/news-manage/add",
-          "/limit-manage",
-          "/limit-manage/role-list",
-          "/limit-manage/limit-list"
+          "/publish-manage",
+          "/publish-manage/unpublished",
+          "/publish-manage/published",
+          "/publish-manage/sunset"
         ],
         "halfChecked": []
       }

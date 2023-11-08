@@ -15,12 +15,10 @@ export const RoleList = () => {
   useEffect(() => {
     axios.get("http://localhost:3000/roles").then((res) => {
       const { data = [] } = res || {};
-      console.log("res", res);
       data.length > 0 && setDataSource(data);
     });
     axios.get("http://localhost:3000/menus?_embed=children").then((res) => {
       const { data = [] } = res || {};
-      console.log("res", res);
       data.length > 0 && setTreeData(data);
     });
   }, []);

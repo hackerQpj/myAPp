@@ -31,7 +31,6 @@ export const LimitList = () => {
   }, []);
 
   const deletefunction = (item) => {
-    console.log("item.grade", item.grade);
     if (item.grade === 1) {
       setDataSource(dataSource.filter((data) => data.id !== item.id));
       axios.delete(`http://localhost:3000/menus/${item.id}`);
@@ -106,7 +105,7 @@ export const LimitList = () => {
             />
             <Popover
               title="页面配置项"
-              trigger={item.permission === 1 ? "click" : ""}
+              trigger="click"
               content={
                 <Switch
                   checked={!!item.permission}
@@ -119,7 +118,7 @@ export const LimitList = () => {
               <Button
                 type="primary"
                 shape="circle"
-                disabled={item.permission === 0 ? true : false}
+                //disabled={item.permission === 0 ? true : false}
                 icon={<EditOutlined />}
               />
             </Popover>

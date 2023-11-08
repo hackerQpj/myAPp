@@ -11,7 +11,6 @@ export default function UserForm(props) {
     isUpdate,
   } = props || {};
   const { Option } = Select;
-  console.log("isUpdate", isUpdate);
 
   const roleObj = {
     1: "superAdmin",

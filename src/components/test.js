@@ -300,7 +300,7 @@ export default App;
 
 
 
-第三题：
+// 第三题：
 import React, { useState } from 'react';
 
 function Input({ value, onChange }) {
