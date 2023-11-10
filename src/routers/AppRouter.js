@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import routeconfig from "./routeConfig";
-import SideMemu from "../components/sidermenu/SideMenu";
+import SideMemu from "../components/SiderMenu/SideMenu";
 import { Layout, theme } from "antd";
 import TopHeader from "../components/topheader/TopHeader";
 import Nopermission from "./Nopermission";

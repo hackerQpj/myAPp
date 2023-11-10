@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "./index.css";
 import axios from "axios";
-import { log } from "../../utils/util";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
