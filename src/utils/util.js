@@ -1,10 +1,16 @@
 import axios from "axios";
 
 export const requestData = (url) => {
+  const BASE_URL = "http://localhost:3000";
   if (url) {
-    return axios.get(url);
+    if (url.includes("http://localhost:3000")) {
+      return axios.get(url);
+    } else {
+      return axios.get(`${BASE_URL}${url}`);
+    }
+  } else {
+    return null;
   }
-  return null;
 };
 
 export const log = console.log.bind(console);

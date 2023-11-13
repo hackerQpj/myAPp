@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "./index.css";
 import axios from "axios";
-import { log } from "../../utils/util";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -92,11 +91,16 @@ function SideMemu(props) {
   ];
 
   const openKeys = `/${window.location.pathname.split("/")[1]}`;
-  const {
-    role: {
-      menus: { checked = [] },
-    },
-  } = JSON.parse(localStorage.getItem("roleInfo")); //获取登录存储的token（roleInfo）数据
+
+  let tokenData;
+  try {
+    if (localStorage.getItem("roleInfo")) {
+      tokenData = JSON.parse(localStorage.getItem("roleInfo")); //获取登录存储的token（roleInfo）数据
+    }
+  } catch (error) {
+    tokenData = {};
+  }
+  const { role: { menus: { checked = [] } = {} } = {} } = tokenData;
 
   const checkPagePermit = (filterItems) => {
     return (

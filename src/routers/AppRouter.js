@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import routeconfig from "./routeConfig";
 import SideMemu from "../components/sidermenu/SideMenu";
@@ -6,8 +6,6 @@ import { Layout, theme } from "antd";
 import TopHeader from "../components/topheader/TopHeader";
 import Nopermission from "./Nopermission";
 import { getUserTokenInfo } from "../utils/util";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
 
 const { Content } = Layout;
 
@@ -54,12 +52,6 @@ export default function AppRouter(props) {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
-  NProgress.start();
-  
-  useEffect(() => {
-    NProgress.done();
-  }, []);
 
   return (
     <Layout
