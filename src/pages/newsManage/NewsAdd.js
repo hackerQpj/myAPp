@@ -11,7 +11,6 @@ import {
 import { PageHeader } from "@ant-design/pro-layout";
 import { getUserTokenInfo, requestData } from "../../utils/util";
 import NewsEditor from "../../components/news-manage/NewsEditor";
-import { Flex } from "antd/lib";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +23,6 @@ export const NewsAdd = () => {
   const reactQuillRef = useRef(null);
   const { Option } = Select;
   const navigate = useNavigate();
-
   const userTokenInfo = getUserTokenInfo();
 
   const onChange = (value) => {
@@ -33,10 +31,14 @@ export const NewsAdd = () => {
   };
 
   useEffect(() => {
-    requestData("/categories").then((res) => {
-      const { data } = res || {};
-      setCategoryData(data);
-    });
+    requestData("/categories")
+      .then((res) => {
+        const { data } = res || {};
+        setCategoryData(data);
+      })
+      .catch((err) => {
+        //console.log(err);
+      });
   }, []);
 
   const handleSave = (auditState) => {
@@ -100,7 +102,7 @@ export const NewsAdd = () => {
             span: 4,
           }}
           wrapperCol={{
-            span: 20,
+            span: 18,
           }}
           style={{
             maxWidth: "100%",
@@ -154,7 +156,7 @@ export const NewsAdd = () => {
       <div
         style={{
           marginTop: 24,
-          display: Flex,
+          display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
           flexWrap: "nowrap",
@@ -177,11 +179,6 @@ export const NewsAdd = () => {
                   });
               } else {
                 const content = reactQuillRef.current.editor.getContents();
-                console.log(
-                  "content666",
-                  content.ops[0].insert === "\n",
-                  !!content
-                );
                 if (content && content.ops[0].insert === "\n") {
                   message.error("请输入新闻内容");
                 } else {

@@ -76,7 +76,6 @@ export const RoleList = () => {
               shape="circle"
               onClick={() => {
                 setModalVisible(true);
-                console.log("item", item);
                 setCurrentData(item?.menus);
                 setCurrentId(item?.id);
               }}

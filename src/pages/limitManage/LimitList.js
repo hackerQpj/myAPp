@@ -17,17 +17,21 @@ export const LimitList = () => {
 
   useEffect(() => {
     //_embed=children与子表进行关联
-    requestData("http://localhost:3000/menus?_embed=children").then((res) => {
-      const { data } = res || {};
-      if (data && data.length > 0) {
-        data.forEach((item) => {
-          if (item.children.length === 0) {
-            item.children = "";
-          }
-        });
-        setDataSource(res.data);
-      }
-    });
+    requestData("http://localhost:3000/menus?_embed=children")
+      .then((res) => {
+        const { data } = res || {};
+        if (data && data.length > 0) {
+          data.forEach((item) => {
+            if (item.children.length === 0) {
+              item.children = "";
+            }
+          });
+          setDataSource(res.data);
+        }
+      })
+      .catch((err) => {
+        //console.log(err);
+      });
   }, []);
 
   const deletefunction = (item) => {

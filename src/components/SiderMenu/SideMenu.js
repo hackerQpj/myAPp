@@ -152,7 +152,7 @@ function SideMemu(props) {
         <div
           style={{ display: "flex", flexDirection: "column", height: "100%" }}
         >
-          <div className="logo">知音管理平台</div>
+          <div className="logo">新闻管理平台</div>
           <div style={{ flex: 1, overflow: "auto" }}>
             <Menu
               mode="inline"

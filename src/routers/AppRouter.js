@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import routeconfig from "./routeConfig";
 import SideMemu from "../components/sidermenu/SideMenu";
@@ -6,6 +6,7 @@ import { Layout, theme } from "antd";
 import TopHeader from "../components/topheader/TopHeader";
 import Nopermission from "./Nopermission";
 import { getUserTokenInfo } from "../utils/util";
+import axios from "axios";
 
 const { Content } = Layout;
 
@@ -18,13 +19,23 @@ export default function AppRouter(props) {
     return checked.includes(item.path); //做路由权限验证
   };
 
+  // useEffect(() => {
+  //   Promise.all([
+  //     axios.get("http://localhost:3000/menus"),
+  //     axios.get("http://localhost:3000/children"),
+  //   ]).then((res) => {
+  //     console.log("res", res);//两个接口同时请求成功后返回数据，
+  //   });
+  // }, []);
+
+  //newList可以从服务端获取，但是最后还是要通过路径映射到本地的地址
   const renderRoutes = (newList) => {
     if (Array.isArray(newList)) {
       return newList
         .filter((item) => item.path && item.component)
         .map((item, idx) => {
-          if (item.chilren) {
-            return item.chilren.map((item) => {
+          if (item.children) {
+            return item.children.map((item) => {
               return (
                 <Route
                   key={item.id}

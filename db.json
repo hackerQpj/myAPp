@@ -173,6 +173,7 @@
           "/limit-manage",
           "/news-manage/drafts",
           "/news-manage/sort",
+          "/news-manage/preview/:id",
           "/home"
         ],
         "halfChecked": []
@@ -195,7 +196,10 @@
           "/publish-manage",
           "/publish-manage/published",
           "/publish-manage/unpublished",
-          "/publish-manage/sunset"
+          "/publish-manage/sunset",
+          "/news-manage/drafts",
+          "/news-manage/sort",
+          "/news-manage/preview/:id"
         ],
         "halfChecked": []
       }
@@ -214,7 +218,10 @@
           "/publish-manage",
           "/publish-manage/unpublished",
           "/publish-manage/published",
-          "/publish-manage/sunset"
+          "/publish-manage/sunset",
+          "/news-manage/drafts",
+          "/news-manage/sort",
+          "/news-manage/preview/:id"
         ],
         "halfChecked": []
       }
@@ -391,41 +398,6 @@
   ],
   "news": [
     {
-      "title": "111",
-      "categoryId": 2,
-      "content": {
-        "ops": [
-          {
-            "insert": "1111"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "2222"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          }
-        ]
-      },
-      "region": "全球",
-      "author": "admin",
-      "roleId": 1,
-      "auditState": 0,
-      "publishState": 0,
-      "createTime": 1699882321260,
-      "star": 0,
-      "view": 0,
-      "id": 1
-    },
-    {
       "title": "哈登夺得NBA总冠军",
       "categoryId": 1,
       "content": {
@@ -444,6 +416,50 @@
       "star": 0,
       "view": 0,
       "id": 2
+    },
+    {
+      "title": "新闻",
+      "categoryId": 1,
+      "content": {
+        "ops": [
+          {
+            "insert": "1111"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "222"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "333"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          }
+        ]
+      },
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "createTime": 1699966226863,
+      "star": 0,
+      "view": 0,
+      "id": 3
     }
   ]
 }

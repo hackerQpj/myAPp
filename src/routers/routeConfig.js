@@ -13,6 +13,7 @@ import { Published } from "../pages/publishManage/Published";
 import { Unpublished } from "../pages/publishManage/Unpublished";
 import { Sunset } from "../pages/publishManage/Sunset";
 import { Navigate } from "react-router-dom";
+import { NewsPreview } from "../pages/newsManage/NewsPreview";
 
 const routeconfig = [
   {
@@ -84,6 +85,11 @@ const routeconfig = [
     id: 14,
     path: "/publish-manage/sunset",
     component: <Sunset />,
+  },
+  {
+    id: 15,
+    path: "/news-manage/preview/:id",
+    component: <NewsPreview />,
   },
 ];
 
