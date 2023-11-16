@@ -158,7 +158,7 @@ function SideMemu(props) {
               mode="inline"
               theme="dark"
               selectedKeys={[`${window.location?.pathname}`]}
-              defaultOpenKeys={[openKeys]}
+              defaultOpenKeys={[openKeys]}//控制菜单的默认展开项
             >
               {renderMenu(munuData || siderData)}
             </Menu>

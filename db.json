@@ -174,6 +174,7 @@
           "/news-manage/drafts",
           "/news-manage/sort",
           "/news-manage/preview/:id",
+          "/news-manage/update/:id",
           "/home"
         ],
         "halfChecked": []
@@ -199,7 +200,8 @@
           "/publish-manage/sunset",
           "/news-manage/drafts",
           "/news-manage/sort",
-          "/news-manage/preview/:id"
+          "/news-manage/preview/:id",
+          "/news-manage/update/:id"
         ],
         "halfChecked": []
       }
@@ -221,7 +223,8 @@
           "/publish-manage/sunset",
           "/news-manage/drafts",
           "/news-manage/sort",
-          "/news-manage/preview/:id"
+          "/news-manage/preview/:id",
+          "/news-manage/update/:id"
         ],
         "halfChecked": []
       }
@@ -403,7 +406,7 @@
       "content": {
         "ops": [
           {
-            "insert": "1.哈登获得FMVP\n"
+            "insert": "1.哈登获得FMVP\n2.666\n"
           }
         ]
       },
@@ -412,42 +415,18 @@
       "roleId": 1,
       "auditState": 0,
       "publishState": 0,
-      "createTime": 1699882984693,
+      "createTime": 1700111641192,
       "star": 0,
       "view": 0,
       "id": 2
     },
     {
-      "title": "新闻",
+      "title": "测试提交功能",
       "categoryId": 1,
       "content": {
         "ops": [
           {
-            "insert": "1111"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "222"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "333"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
+            "insert": "1.测试提交功能\n"
           }
         ]
       },
@@ -456,7 +435,7 @@
       "roleId": 1,
       "auditState": 0,
       "publishState": 0,
-      "createTime": 1699966226863,
+      "createTime": 1700125070948,
       "star": 0,
       "view": 0,
       "id": 3

@@ -24,3 +24,21 @@ export const getUserTokenInfo = () => {
   }
   return userTokenInfo;
 };
+
+const printCountdown = () => {
+  const intervals = [6000, 5000, 4000]; // 间隔时间（毫秒）
+  const countdowns = [6, 5, 4]; // 对应的倒计时秒数
+
+  let currentIndex = 0;
+
+  const print = () => {
+    const countdown = countdowns[currentIndex];
+    console.log(countdown + " 秒");
+    currentIndex = (currentIndex + 1) % intervals.length;
+    setTimeout(print, intervals[currentIndex]);
+  };
+
+  // 初始启动
+  print();
+};
+

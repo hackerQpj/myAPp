@@ -21,8 +21,6 @@ export const NewsPreview = (props) => {
       });
   }, [id]);
 
-  console.log("dataSource?.content?.insert", dataSource?.content.ops);
-
   return (
     dataSource && (
       <div style={{ marginLeft: "20px", marginRight: "20px" }}>
@@ -76,7 +74,7 @@ export const NewsPreview = (props) => {
           {dataSource &&
             dataSource?.content?.ops?.length > 0 &&
             dataSource?.content?.ops.map((item, idx) => {
-              return <div> {item.insert}</div>;
+              return <div key={idx}> {item.insert}</div>;
             })}
         </div>
       </div>
