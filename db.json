@@ -439,6 +439,26 @@
       "star": 0,
       "view": 0,
       "id": 3
+    },
+    {
+      "title": "test",
+      "categoryId": 2,
+      "content": {
+        "ops": [
+          {
+            "insert": "测试撰写新闻功能\n"
+          }
+        ]
+      },
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "createTime": 1700143248489,
+      "star": 0,
+      "view": 0,
+      "id": 4
     }
   ]
 }
